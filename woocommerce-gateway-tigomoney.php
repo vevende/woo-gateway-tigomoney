@@ -1,40 +1,50 @@
 <?php
 /**
- * Plugin Name: WooCommerce Gateway for Tigomoney (Bolivia)
- * Plugin URI: https://github.com/vevende/woocommerce-gateway-tigomoney/
- * Description: Provides integration between TigoMoney (Bolivia) mobile payments and WooCommerce
- * Version: 1.0.0-dev
- * Author: Vevende
- * Author URI: https://www.vevende.com
- * Requires at least: 4.1
- * Tested up to: 4.3
+ * Plugin Name: TigoMoney Gateway
+ * Description: TigoMoney Gateway
+ * Version: 2.0
+ * Author: Vevende SRL
+ * Author URI: https://www.vevende.com/
+
  *
- * Text Domain: woocommerce
- * Domain Path: /i18n/languages/
- *
- * @package WooCommerce
- * @category Core
- * @author Vevende
+ * @package WC_Gateway_TigoMoney
+ * @version 1.2
+ * @category Gateway
+ * @author Mario César Señoranis Ayala
  */
 
-
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
-
-
-/**
- * Main WooCommerce Gateway For TigoMoney
- *
- * @package default
- * @author
- **/
-final class WooCommerceGatewayTigomoney {
-
-    /**
-     * Current version
-     *
-     * @var string
-     **/
-    public $version = '1.0.0';
-
+if (!defined('ABSPATH')) {
+	exit;
 }
 
+if (!class_exists('WC_TigoMoney')):
+
+	class WC_TigoMoney {
+		const VERSION = '1.1';
+		protected static $instance = null;
+
+		private function __construct() {
+			if (class_exists('WC_Payment_Gateway')) {
+				include_once 'includes/class-wc-gateway-request.php';
+				include_once 'includes/class-wc-gateway.php';
+				add_filter('woocommerce_payment_gateways', array($this, 'add_gateway'));
+			}
+		}
+
+		public static function get_instance() {
+			if (null == self::$instance) {
+				self::$instance = new self;
+			}
+
+			return self::$instance;
+		}
+
+		public function add_gateway($methods) {
+			$methods[] = 'WC_Gateway_TigoMoney';
+			return $methods;
+		}
+
+	}
+
+	add_action('plugins_loaded', array('WC_TigoMoney', 'get_instance'), 0);
+endif;
