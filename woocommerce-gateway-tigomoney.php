@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: TigoMoney Gateway
- * Description: TigoMoney Gateway
- * Version: 2.0
+ * Plugin Name: WooCommerce TigoMoney Gateway
+ * Description: WooCommerce Payment Gateway for TigoMoney
+ * Version: 2.5
  * Author: Vevende SRL
  * Author URI: https://www.vevende.com/
  *
  * @package WC_Gateway_TigoMoney
- * @version 1.2
+ * @version 2.5
  * @category Gateway
  * @author Mario César Señoranis Ayala
  */

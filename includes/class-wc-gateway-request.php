@@ -49,7 +49,7 @@ class WC_Gateway_TigoMoney_Request {
 		$postmeta = get_post_meta($order->id);
 		$params = array(
 			'pv_orderId' => $order->id,
-			'pv_monto' => $order->get_total()*$this->gateway->settings['usdbob'],
+			'pv_monto' => $order->get_total(),
 			'pv_linea' => $phonenumber,
 			'pv_nombre' => $order->billing_first_name . ' ' . $order->billing_last_name,
 			'pv_urlCorrecto' => esc_url($this->notify_url),

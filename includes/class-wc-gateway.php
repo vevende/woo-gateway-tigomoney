@@ -194,14 +194,7 @@ class WC_Gateway_TigoMoney extends WC_Payment_Gateway {
                 'description' => __('Mensaje adicional que se enviara en la notificación cuando se realice el cobro.', 'woocommerce'),
                 'default' => 'Mensaje Notificacion',
                 'desc_tip' => true,
-            ),
-            'usdbob' => array(
-                'title' => __('Tipo de Cambio', 'woocommerce'),
-                'type' => 'text',
-                'description' => __('Tipo de cambio entre la moneda del sitio y TigoMoney.', 'woocommerce'),
-                'default' => '1',
-                'desc_tip' => true,
-            ),
+            )
         );
     }
 
