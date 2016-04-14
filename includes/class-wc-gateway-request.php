@@ -1,9 +1,13 @@
 <?php
 /**
- * Gateway TigoMoney
+ * Plugin Name: WooCommerce TigoMoney Gateway
+ * Description: WooCommerce Payment Gateway for TigoMoney
+ * Version: 2.6
+ * Author: Vevende SRL
+ * Author URI: https://www.vevende.com/
  *
  * @package WC_Gateway_TigoMoney
- * @version 1.0
+ * @version 2.6
  * @category Gateway
  * @author Mario César Señoranis Ayala
  */
@@ -54,13 +58,20 @@ class WC_Gateway_TigoMoney_Request {
 			'pv_nombre' => $order->billing_first_name . ' ' . $order->billing_last_name,
 			'pv_urlCorrecto' => esc_url($this->notify_url),
 			'pv_urlError' => esc_url($this->notify_url),
-			'pv_confirmacion' => $this->gateway->settings['confirmation_message'],
-			'pv_notificacion' => $this->gateway->settings['notify_message'],
 			'pv_razonSocial' => $order->billing_recipient,
 			'pv_nit' => $order->billing_nit,
 			'pv_items' => '',
 		);
 
+        if($this->gateway->settings['confirmation_message']) !== "")
+        {
+            $params['pv_confirmacion'] => $this->gateway->settings['confirmation_message'];
+        }
+
+        if($this->gateway->settings['notify_message'] !== "")   
+        {
+            $params['pv_notificacion'] => $this->gateway->settings['notify_message'];
+        }
 		$item_number = 0;
 
 		if (sizeof($order->get_items()) > 0) {

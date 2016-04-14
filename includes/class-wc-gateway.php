@@ -1,9 +1,13 @@
 <?php
 /**
- * Gateway TigoMoney
+ * Plugin Name: WooCommerce TigoMoney Gateway
+ * Description: WooCommerce Payment Gateway for TigoMoney
+ * Version: 2.6
+ * Author: Vevende SRL
+ * Author URI: https://www.vevende.com/
  *
  * @package WC_Gateway_TigoMoney
- * @version 1.0
+ * @version 2.6
  * @category Gateway
  * @author Mario César Señoranis Ayala
  */
@@ -127,52 +131,52 @@ class WC_Gateway_TigoMoney extends WC_Payment_Gateway {
     public function init_form_fields() {
         $this->form_fields = array(
             'enabled' => array(
-                'title' => __('Enable/Disable', 'woocommerce'),
+                'title' => __('Habilitar Medio de Pago', 'woocommerce'),
                 'type' => 'checkbox',
                 'label' => __('Habilitar Tigo Money', 'woocommerce'),
                 'default' => 'yes',
             ),
 
             'sandbox' => array(
-                'title' => __('Enable/Disable', 'woocommerce'),
+                'title' => __('Modo de pruebas', 'woocommerce'),
                 'type' => 'checkbox',
-                'label' => __('Modo de pruebas', 'woocommerce'),
+                'label' => __('Habilitar Modo de pruebas', 'woocommerce'),
                 'default' => 'yes',
             ),
 
             'debug' => array(
-                'title' => __('Debug Log', 'woocommerce'),
+                'title' => __('Registro de desarrollo', 'woocommerce'),
                 'type' => 'checkbox',
-                'label' => __('Enable logging', 'woocommerce'),
+                'label' => __('Permitir Registro', 'woocommerce'),
                 'default' => 'no',
             ),
 
             'title' => array(
-                'title' => __('Title', 'woocommerce'),
+                'title' => __('Título', 'woocommerce'),
                 'type' => 'text',
-                'description' => __('This controls the title which the user sees during checkout.', 'woocommerce'),
+                'description' => __('Aquí se configura el título del medio de pago que el usuario ve cuando finaliza la compra.', 'woocommerce'),
                 'default' => __('TigoMoney', 'woocommerce'),
                 'desc_tip' => true,
             ),
 
             'description' => array(
-                'title' => __('Description', 'woocommerce'),
+                'title' => __('Descripción', 'woocommerce'),
                 'type' => 'text',
                 'desc_tip' => true,
-                'description' => __('This controls the description which the user sees during checkout.', 'woocommerce'),
+                'description' => __('Esto muestra la descripción del medio de pago que el usuario ve cuando finaliza la compra.', 'woocommerce'),
                 'default' => __('Paga via TigoMoney.', 'woocommerce'),
             ),
 
             'identity_token' => array(
-                'title' => __('Llave Identificacion', 'woocommerce'),
+                'title' => __('Llave de Identificación', 'woocommerce'),
                 'type' => 'text',
-                'description' => __('Ingrese su llave TigoMoney de Identificacion, esta se usara para identificar al comercio dentro de la pasarela de pagos VIPAGOS. ', 'woocommerce'),
+                'description' => __('Ingrese su llave TigoMoney de Identificación, esta se usara para identificar al comercio dentro de la pasarela de pagos VIPAGOS. ', 'woocommerce'),
                 'default' => '',
                 'desc_tip' => true,
             ),
 
             'encrypt_key' => array(
-                'title' => __('Llave de Encriptacion', 'woocommerce'),
+                'title' => __('Llave de Encriptación', 'woocommerce'),
                 'type' => 'text',
                 'description' => __('Esta se usara para encriptar los parámetros antes de re direccionar a la pasarela de pagos VIPAGOS así como también desencriptar la respuestas de esta misma.', 'woocommerce'),
                 'default' => '',
@@ -181,15 +185,15 @@ class WC_Gateway_TigoMoney extends WC_Payment_Gateway {
             ),
 
             'confirmation_message' => array(
-                'title' => __('Mensaje de Confirmacion', 'woocommerce'),
+                'title' => __('Mensaje de Confirmación', 'woocommerce'),
                 'type' => 'text',
                 'description' => __('Este mensaje será enviado al cliente en el SMS de confirmación cuando el pago se haya realizado de manera exitosa.', 'woocommerce'),
-                'default' => 'Mensaje Confirmacion',
+                'default' => 'Mensaje Confirmación',
                 'desc_tip' => true,
             ),
 
             'notify_message' => array(
-                'title' => __('Mensaje de Notificacion', 'woocommerce'),
+                'title' => __('Mensaje de Notificación', 'woocommerce'),
                 'type' => 'text',
                 'description' => __('Mensaje adicional que se enviara en la notificación cuando se realice el cobro.', 'woocommerce'),
                 'default' => 'Mensaje Notificacion',
