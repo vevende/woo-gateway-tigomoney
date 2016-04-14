@@ -63,15 +63,16 @@ class WC_Gateway_TigoMoney_Request {
 			'pv_items' => '',
 		);
 
-        if($this->gateway->settings['confirmation_message']) !== "")
+        if ($this->gateway->settings['confirmation_message'] !== "")
         {
-            $params['pv_confirmacion'] => $this->gateway->settings['confirmation_message'];
+            $params['pv_confirmacion'] = $this->gateway->settings['confirmation_message'];
         }
 
-        if($this->gateway->settings['notify_message'] !== "")   
+        if ($this->gateway->settings['notify_message'] !== "")   
         {
-            $params['pv_notificacion'] => $this->gateway->settings['notify_message'];
+            $params['pv_notificacion'] = $this->gateway->settings['notify_message'];
         }
+
 		$item_number = 0;
 
 		if (sizeof($order->get_items()) > 0) {
