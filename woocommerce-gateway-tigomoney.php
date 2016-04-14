@@ -43,7 +43,7 @@ if (!class_exists('WC_TigoMoney')):
             return $methods;
         }
 
-        public function plugin_updater() {
+        public static function plugin_updater() {
             include_once 'updater.php';
 
             if (is_admin()) {
