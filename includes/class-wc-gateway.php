@@ -2,12 +2,12 @@
 /**
  * Plugin Name: WooCommerce TigoMoney Gateway
  * Description: WooCommerce Payment Gateway for TigoMoney
- * Version: 2.6.2
+ * Version: 2.6.3
  * Author: Vevende SRL
  * Author URI: https://www.vevende.com/
  *
  * @package WC_Gateway_TigoMoney
- * @version 2.6.2
+ * @version 2.6.3
  * @category Gateway
  * @author Mario César Señoranis Ayala
  */
@@ -43,7 +43,7 @@ class WC_Gateway_TigoMoney extends WC_Payment_Gateway {
         $this->init_settings();
 
         // Define user set variables
-        $this->title = $this->get_option('title');
+        $this->title = 'TigoMoney';
         $this->description = $this->get_option('description');
 
         // Tigomoney variables
@@ -151,19 +151,11 @@ class WC_Gateway_TigoMoney extends WC_Payment_Gateway {
                 'default' => 'no',
             ),
 
-            'title' => array(
-                'title' => __('Título', 'woocommerce'),
-                'type' => 'text',
-                'description' => __('Aquí se configura el título del medio de pago que el usuario ve cuando finaliza la compra.', 'woocommerce'),
-                'default' => __('TigoMoney', 'woocommerce'),
-                'desc_tip' => true,
-            ),
-
             'description' => array(
                 'title' => __('Descripción', 'woocommerce'),
                 'type' => 'text',
                 'desc_tip' => true,
-                'description' => __('Esto muestra la descripción del medio de pago que el usuario ve cuando finaliza la compra.', 'woocommerce'),
+                'description' => __('Describe el método de pago al usuario al finalizar la compra.', 'woocommerce'),
                 'default' => __('Paga via TigoMoney.', 'woocommerce'),
             ),
 
