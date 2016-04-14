@@ -91,3 +91,4 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 == Commercial Support ==
+If you need help installing or modifying this plugin, you can get commercial support sending an email to info@zoftco.com and accessing http://vevende.com
