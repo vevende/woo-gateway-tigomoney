@@ -1,7 +1,7 @@
-=== Woocommerce TigoMoney Gateway ===
+=== WC TigoMoney Gateway ===
 
 Contributors: vevende
-Tags: bolivia, ecommerce, e-commerce, store, sales, sell, mobile payment, tigo
+Tags: bolivia, ecommerce, e-commerce, store, sales, sell, mobile payment, tigo money, tigo, woocommerce
 Requires at least: 4.1
 Tested up to: 4.5
 Stable tag: 2.5.0
@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Provides integration between TigoMoney (Bolivia) mobile payments and WooCommerce.
 
 == Description ==
-Woocommerce TigoMoney Gateway plugin allows to easily add TigoMoney Bolivia payment option to your Wordpress / Woocommerce website store. Tigo Money Users from Bolivia will be able to pay to your business tigo money account using their virtual mobile wallet money. 
+WC TigoMoney Gateway plugin allows to easily add TigoMoney Bolivia payment option to your Wordpress / Woocommerce website store. Tigo Money Users from Bolivia will be able to pay to your business tigo money account using their virtual mobile wallet money. 
 
 You can integrate this to your Wordpress / Woocommerce Store and after applying to Tigo Money Business account start selling your products and services online. The plugin features also the testing mode for the required validation for the account and sandbox testing of sales.
 
