@@ -1,17 +1,16 @@
 <?php
 /**
- * Plugin Name: WooCommerce TigoMoney Gateway
- * Description: WooCommerce Payment Gateway for TigoMoney
- * Version: 2.6.3
+ * Plugin Name: Woo TigoMoney Gateway
+ * Description: Payment Gateway for TigoMoney in Woocommerce
+ * Version: 2.7.0
  * Author: Vevende SRL
  * Author URI: https://www.vevende.com/
  *
  * @package WC_Gateway_TigoMoney
- * @version 2.6.3
+ * @version 2.7.0
  * @category Gateway
  * @author Mario César Señoranis Ayala
  */
-
 if (!defined('ABSPATH')) {
 	exit;
 }
@@ -68,7 +67,7 @@ class WC_Gateway_TigoMoney_Request {
             $params['pv_confirmacion'] = $this->gateway->settings['confirmation_message'];
         }
 
-        if ($this->gateway->settings['notify_message'] !== "")   
+        if ($this->gateway->settings['notify_message'] !== "")
         {
             $params['pv_notificacion'] = $this->gateway->settings['notify_message'];
         }
