@@ -1,4 +1,4 @@
-# [TigoMoney Payment Gateway](https://github.com/vevende/woo-gateway-tigomoney)
+# [TigoMoney Payment Gateway](https://www.vevende.com/woo-gateway-tigomoney)
 
 ## Documentation
 
