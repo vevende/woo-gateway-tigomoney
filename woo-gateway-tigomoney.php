@@ -18,11 +18,15 @@ if (!defined('ABSPATH')) {
 
 if (!class_exists('WC_TigoMoney')):
 
-    class WC_TigoMoney {
+    class WcTigomoney {
         const VERSION = '2.7';
+
+        /**
+         * @var mixed
+         */
         protected static $instance = null;
 
-        private function __construct() {
+        public function __construct() {
             if (class_exists('WC_Payment_Gateway')) {
                 include_once 'includes/class-wc-gateway-request.php';
                 include_once 'includes/class-wc-gateway.php';
@@ -30,20 +34,27 @@ if (!class_exists('WC_TigoMoney')):
             }
         }
 
-        public static function get_instance() {
+        /**
+         * @param $methods
+         * @return mixed
+         */
+        public function addGateway($methods) {
+            $methods[] = 'WC_Gateway_TigoMoney';
+            return $methods;
+        }
+
+        /**
+         * @return WcTigomoney - Main instance
+         */
+        public static function getInstance() {
             if (null == self::$instance) {
-                self::$instance = new self;
+                self::$instance = new self();
             }
 
             return self::$instance;
         }
 
-        public function add_gateway($methods) {
-            $methods[] = 'WC_Gateway_TigoMoney';
-            return $methods;
-        }
-
-        public static function plugin_updater() {
+        public static function pluginUpdater() {
             include_once 'updater.php';
 
             if (is_admin()) {
@@ -63,6 +74,8 @@ if (!class_exists('WC_TigoMoney')):
                 new WP_GitHub_Updater($config);
             }
         }
+
+
     }
 
     add_action('init', array('WC_TigoMoney', 'plugin_updater'));

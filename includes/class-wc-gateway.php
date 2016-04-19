@@ -72,7 +72,6 @@ class WC_Gateway_TigoMoney extends WC_Payment_Gateway {
         }
     }
 
-
     // Process the payment and return the result
     public function process_payment($order_id) {
         $order = new WC_Order($order_id);

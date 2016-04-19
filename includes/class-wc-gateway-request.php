@@ -11,6 +11,7 @@
  * @category Gateway
  * @author Mario César Señoranis Ayala
  */
+
 if (!defined('ABSPATH')) {
 	exit;
 }
