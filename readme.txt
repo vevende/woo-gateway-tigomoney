@@ -1,17 +1,17 @@
 === Woo TigoMoney Gateway ===
 
 Contributors: vevende
-Tags: store, sales, sell, mobile payment, tigo, tigo money, tigo money bolivia, woocommerce, bolivia, ecommerce, e-commerce, 
+Tags: store, sales, sell, mobile payment, tigo, tigo money, tigo money bolivia, woocommerce, bolivia, ecommerce, e-commerce,
 Requires at least: 4.1
 Tested up to: 4.5
-Stable tag: 2.7.0
+Stable tag: 2.8.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Provides integration between TigoMoney (Bolivia) mobile payments and WooCommerce.
 
 == Description ==
-Woo TigoMoney Gateway plugin allows to easily add TigoMoney Bolivia payment option to your Wordpress / Woocommerce website store. Tigo Money Users from Bolivia will be able to pay to your business tigo money account using their virtual mobile wallet money. 
+Woo TigoMoney Gateway plugin allows to easily add TigoMoney Bolivia payment option to your Wordpress / Woocommerce website store. Tigo Money Users from Bolivia will be able to pay to your business tigo money account using their virtual mobile wallet money.
 
 You can integrate this to your Wordpress / Woocommerce Store and after applying to Tigo Money Business account start selling your products and services online. The plugin features also the testing mode for the required validation for the account and sandbox testing of sales.
 
@@ -21,7 +21,6 @@ You can integrate this to your Wordpress / Woocommerce Store and after applying 
 * You can set and modify the identification and encriptation key directly in the admin panel.
 * The confirmation and notification message are customizable.
 * At the Checkout, two fields are enabled: CI and Phone number.
-* You can set the exchange rate from your store to the Bolivian Boliviano, for example if your store is in United States Dollars USD 
 * Compatible with Woocommerce and any Woocommerce enabled theme.
 
 == Installation ==
@@ -29,7 +28,7 @@ You can integrate this to your Wordpress / Woocommerce Store and after applying 
 
 2. After Woocommerce is working, download Woo TigoMoney Gateway or select it from the Wordpress Plugin Directory. In the admin panel, select plugin -> install new. Then upload or search it in the Wordpress Plugin Directory.
 
-3. After installation of Tigo Money Plugin, you have to configure the basic settings in the plugin: 
+3. After installation of Tigo Money Plugin, you have to configure the basic settings in the plugin:
 Go to WooCommerce -> Settings. In the Checkout panel, select Tigo Money of the different Checkout Options.
 * Enable Tigo Money
 * Select if you need to enable the testing mode
@@ -37,7 +36,6 @@ Go to WooCommerce -> Settings. In the Checkout panel, select Tigo Money of the d
 * Select the description of the payment method for the user (default is Pay with TigoMoney)
 * Enter the identification and encryption key provided by Tigo Money
 * Enter your own Confirmation and Notification message
-* If your webstore is not in bolivian boliviano (BOB) you can add an exchenge rate.
 * In case of problems with the plugin, you can enable the debug log for troubleshooting.
 
 Save the settings and the plugin is insalled. It will appear as an option of purchase for your clients in the checkout screen.
@@ -62,7 +60,13 @@ No, this plugin requires woocommerce to work.
 3. Tigo Money Gateway (Vipagos) Confirmation Screen
 
 == Changelog ==
-= Version 2.5 
+= Version 2.8
+* Removed Github automatic plugin update for Wordpress.org plugin repository compliance
+
+=Version 2.7
+* Removed Money exchange rate, in the future it will use woocommerce own exchange rate interface.
+
+= Version 2.5
 * Money exchange rate (for example, for using in websites that charge in USD dollars)
 * Preparation for public use
 
