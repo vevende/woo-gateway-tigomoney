@@ -2,12 +2,12 @@
 /**
  * Plugin Name: Woo TigoMoney Gateway
  * Description: Payment Gateway for TigoMoney in Woocommerce
- * Version: 2.9.0
+ * Version: 3.2.0
  * Author: Vevende SRL
  * Author URI: https://www.vevende.com/
  *
  * @package WC_Gateway_TigoMoney
- * @version 3.0.0
+ * @version 3.2.0
  * @category Gateway
  * @author Mario César Señoranis Ayala
  */
@@ -96,7 +96,8 @@ class WC_Gateway_TigoMoney extends WC_Payment_Gateway {
             if (preg_match("/^[6-7][0-9]{7}$/", $phone)) {
                 $tigomoney = new WC_Gateway_TigoMoney_Request($this);
                 $pay_url = $tigomoney->get_request_url($order, $posted['tigomoney-phonenumber']);
-                wp_redirect($pay_url);
+                $mensaje = $tigomoney->generate_arguments($order, $posted['tigomoney-phonenumber']);
+                $tigomoney->pagoTigo($mensaje,$order);
                 exit();
             } else {
                 echo '<p class="woocommerce-error">Por favor ingresa un número de movil válido.</p>';

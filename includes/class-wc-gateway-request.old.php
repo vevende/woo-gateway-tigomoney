@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 /**
  * Plugin Name: Woo TigoMoney Gateway
  * Description: Payment Gateway for TigoMoney in Woocommerce
@@ -41,55 +38,59 @@ class WC_Gateway_TigoMoney_Request {
 	}
 
 	public function get_request_url($order, $phonenumber) {
+		$tigomoney_args = $this->generate_arguments($order, $phonenumber);
+		$encrypted_params = $this->Encrypt($tigomoney_args);
 
 		if ($this->gateway->sandbox) {
 			$host = 'http://190.129.208.178:96/PasarelaServices/CustomerServices?wsdl';
 		} else {
 			$host = 'https://pasarela.tigomoney.com.bo/PasarelaServices/CustomerServices?wsdl';
 		}
-		return sprintf('%s', $host);
+		return sprintf('%s?key=%s&parametros=%s', $host, $this->gateway->identity_token, $encrypted_params);
 	}
 
 
-	public function pagoTigo($mensaje,$order)
-    {
-        require 'lib/CTripleDes.php';
-        require 'lib/nusoap.php';
+	
 
-        //encriptacion
-        $tripleDes = new CTripleDes();
-        $tripleDes->setMessage($mensaje);
-        $tripleDes->setPrivateKey($this->gateway->encrypt_key);
-        $mensajeEncriptado = $tripleDes->encrypt();
 
-        //llamada el WS
-        try {
-            $client = new nusoap_client('http://190.129.208.178:96/PasarelaServices/CustomerServices?wsdl','wsdl');
-            $err = $client->getError();
-            $parametro = array('key' => $this->gateway->identity_token, 'parametros' => $mensajeEncriptado);
-            $result = $client->call('solicitarPago', $parametro);
-            $encryptado = implode($result);
-            //Desencriptacion
-            $tripleDes2 = new CTripleDes();
-            $tripleDes2->setMessage_to_decrypt($encryptado);
-            $tripleDes2->setPrivateKey($this->gateway->encrypt_key);
-            $respuesta = $tripleDes2->decrypt();
-            echo $err;
-            echo "<br><center><h4><strong>Resultado de la transacción</strong></h4></center>";
-            echo "<br>";
-            $vector = explode("&", $respuesta);
-            //echo "<center><h4>".$vector[0]."<h4></center>";
-            echo "<center><h4>".$vector[1]."<h4></center>";
-            //echo "<center><h4>".$vector[2]."<h4></center>";
-            //echo "<center><h4>".$vector[3]."<h4></center>";
-            echo "<br>";
-        }
-        catch(Exception $e){
-            echo $e;
-        }
-    }
 
-	public function generate_arguments($order, $phonenumber) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	protected function generate_arguments($order, $phonenumber) {
+		$postmeta = get_post_meta($order->id);
 		if (get_woocommerce_currency() != "BOB")
 		{
 			$tc=$this->gateway->settings['usdbob'];
@@ -97,13 +98,10 @@ class WC_Gateway_TigoMoney_Request {
 			$tc=1;
 		}
 		$params = array(
-            'pv_nroDocumento' => '12345678',
-            'pv_linea' => $phonenumber,
+			'pv_orderId' => $order->id,
 			'pv_monto' => $order->get_total()*$tc,
-            'pv_orderId' => $order->id,
+			'pv_linea' => $phonenumber,
 			'pv_nombre' => $order->billing_first_name . ' ' . $order->billing_last_name,
-            'pv_confirmacion' => '',
-            'pv_notificacion' => '',
 			'pv_urlCorrecto' => esc_url($this->notify_url),
 			'pv_urlError' => esc_url($this->notify_url),
 			'pv_razonSocial' => $order->billing_recipient,

@@ -2,12 +2,12 @@
 /**
  * Plugin Name: Woo TigoMoney Gateway
  * Description: Payment Gateway for TigoMoney in Woocommerce
- * Version: 3.0.0
+ * Version: 3.2.0
  * Author: Vevende SRL
  * Author URI: https://www.vevende.com/
  *
  * @package WC_Gateway_TigoMoney
- * @version 3.0.0
+ * @version 3.2.0
  * @category Gateway
  * @author Mario César Señoranis Ayala
  */
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 if (!class_exists('WC_TigoMoney')):
 
     class WC_TigoMoney {
-        const VERSION = '3.0.0';
+        const VERSION = '3.2.0';
 
         /**
          * @var mixed

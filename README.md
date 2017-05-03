@@ -4,7 +4,7 @@ Contributors: vevende
 Tags: store, sales, sell, mobile payment, tigo, tigo money, tigo money bolivia, woocommerce, bolivia, ecommerce, e-commerce,
 Requires at least: 4.1
 Tested up to: 4.5.3
-Stable tag: 3.0.0
+Stable tag: 3.2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -60,6 +60,9 @@ No, this plugin requires woocommerce to work.
 3. Tigo Money Gateway (Vipagos) Confirmation Screen
 
 == Changelog ==
+= Version 3.2
+* Replaced Tigo Money Redirect for Tigo Money API
+
 = Version 3.0
 * Fixed Money exchange rate (sites that charge in a currency different than BOB (Bolivian Boliviano) can set the currency exchange rate. If your site charges in BOB, the exchange rate is not longer required.
 * Testing Gateway Updated to 190.129.208.178:96
