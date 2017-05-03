@@ -2,12 +2,12 @@
 /**
  * Plugin Name: Woo TigoMoney Gateway
  * Description: Payment Gateway for TigoMoney in Woocommerce
- * Version: 2.8.0
+ * Version: 3.0.0
  * Author: Vevende SRL
  * Author URI: https://www.vevende.com/
  *
  * @package WC_Gateway_TigoMoney
- * @version 2.8.0
+ * @version 3.0.0
  * @category Gateway
  * @author Mario César Señoranis Ayala
  */
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 if (!class_exists('WC_TigoMoney')):
 
     class WC_TigoMoney {
-        const VERSION = '2.8.0';
+        const VERSION = '3.0.0';
 
         /**
          * @var mixed
@@ -55,5 +55,18 @@ if (!class_exists('WC_TigoMoney')):
         }
 
     }
+    add_filter( 'woocommerce_currencies', 'add_bob_currency' );
+    add_filter('woocommerce_currency_symbol', 'add_bob_currency_symbol', 10, 2);
     add_action('plugins_loaded', array('WC_TigoMoney', 'get_Instance'), 0);
 endif;
+
+function add_bob_currency( $currencies ) {
+ $currencies['BOB'] = __( 'Bolivian Boliviano (Bs.)', 'woocommerce' );
+ return $currencies;
+}
+function add_bob_currency_symbol( $currency_symbol, $currency ) {
+ switch( $currency ) {
+ case 'BOB': $currency_symbol = 'Bs.'; break;
+ }
+ return $currency_symbol;
+}

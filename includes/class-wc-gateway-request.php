@@ -7,7 +7,7 @@
  * Author URI: https://www.vevende.com/
  *
  * @package WC_Gateway_TigoMoney
- * @version 2.8.0
+ * @version 3.0.0
  * @category Gateway
  * @author Mario César Señoranis Ayala
  */
@@ -42,18 +42,24 @@ class WC_Gateway_TigoMoney_Request {
 		$encrypted_params = $this->Encrypt($tigomoney_args);
 
 		if ($this->gateway->sandbox) {
-			$host = 'https://190.129.208.178:8181/vipagos/faces/payment.xhtml';
+			$host = 'http://190.129.208.178:96/vipagos/faces/payment.xhtml';
 		} else {
-			$host = 'https://vipagos.com.bo/vipagos/faces/payment.xhtml';
+			$host = 'https://pasarela.tigomoney.com.bo/vipagos/faces/payment.xhtml';
 		}
 		return sprintf('%s?key=%s&parametros=%s', $host, $this->gateway->identity_token, $encrypted_params);
 	}
 
 	protected function generate_arguments($order, $phonenumber) {
 		$postmeta = get_post_meta($order->id);
+		if (get_woocommerce_currency() != "BOB")
+		{
+			$tc=$this->gateway->settings['usdbob'];
+		} else {
+			$tc=1;
+		}
 		$params = array(
 			'pv_orderId' => $order->id,
-			'pv_monto' => $order->get_total(),
+			'pv_monto' => $order->get_total()*$tc,
 			'pv_linea' => $phonenumber,
 			'pv_nombre' => $order->billing_first_name . ' ' . $order->billing_last_name,
 			'pv_urlCorrecto' => esc_url($this->notify_url),

@@ -2,12 +2,12 @@
 /**
  * Plugin Name: Woo TigoMoney Gateway
  * Description: Payment Gateway for TigoMoney in Woocommerce
- * Version: 2.8.0
+ * Version: 2.9.0
  * Author: Vevende SRL
  * Author URI: https://www.vevende.com/
  *
  * @package WC_Gateway_TigoMoney
- * @version 2.8.0
+ * @version 3.0.0
  * @category Gateway
  * @author Mario César Señoranis Ayala
  */
@@ -35,7 +35,7 @@ class WC_Gateway_TigoMoney extends WC_Payment_Gateway {
         $this->has_fields = false;
         $this->supports = array('products');
         $this->method_title = 'Tigo Money';
-        $this->method_description = 'Pago en linea via Tigo Money';
+        $this->method_description = 'Pago en linea via Tigo Money Bolivia';
         $this->order_button_text = 'Pagar con Tigo Money';
 
         // Load the settings.
@@ -189,8 +189,22 @@ class WC_Gateway_TigoMoney extends WC_Payment_Gateway {
                 'description' => __('Mensaje adicional que se enviara en la notificación cuando se realice el cobro.', 'woocommerce'),
                 'default' => 'Mensaje Notificacion',
                 'desc_tip' => true,
+
             )
         );
+        if (get_woocommerce_currency() != "BOB")
+        {
+          $this->form_fields['usdbob'] = array(
+                  'title' => __('Tipo de Cambio ('.get_woocommerce_currency().') y (BOB)', 'woocommerce'),
+                  'type' => 'text',
+                  'description' => __('Tipo de cambio entre la moneda del sitio ('.get_woocommerce_currency().') y TigoMoney.', 'woocommerce'),
+                  'default' => '1',
+                  'desc_tip' => true,
+          );
+        } else {
+          $this->gateway->settings['usdbob'] = 1;
+        }
+
     }
 
     // Output for the order received page.
