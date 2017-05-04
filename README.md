@@ -3,9 +3,9 @@
 
 # Country support
 
-- [] Bolivia
-- [] Paraguay
-- [] South Africa
+- [x] Bolivia
+- [ ] Paraguay
+- [ ] South Africa
 
 # Installation
 
